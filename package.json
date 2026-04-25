@@ -1,0 +1,23 @@
+{
+  "name": "playwrightsession2025",
+  "version": "1.0.0",
+  "description": "Playwright, TypeScript, and JavaScript concept examples for students.",
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ts": "playwright test playwright/tests/typescript"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.4.0"
+  }
+}

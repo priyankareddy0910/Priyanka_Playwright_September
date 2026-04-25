@@ -1,0 +1,28 @@
+
+# Dependencies
+node_modules/
+
+# Playwright outputs
+test-results/
+playwright-report/
+blob-report/
+videos/
+
+# Playwright local state
+playwright/.cache/
+playwright/.auth/
+auth/
+
+# Temporary files
+*.tmp
+*.json.tmp
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
