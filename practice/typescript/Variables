@@ -1,0 +1,71 @@
+
+function trainer(){
+    var name=false;
+    console.log(typeof(name));
+}
+function trainer2(){
+    var name='priya';
+    console.log('priya');
+}
+
+trainer();
+trainer2();
+
+var name='priya';
+
+
+if (true)
+{
+    function greet()
+    {
+        console.log("high")
+    }
+}
+console.log(typeof(greet));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

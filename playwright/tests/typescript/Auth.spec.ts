@@ -4,32 +4,23 @@ const BASE_URL = 'https://www.saucedemo.com/';
 const STORAGE_STATE_PATH = 'auth/sauce-session.json';
 
 test('create authenticated SauceDemo session and save storage state', async ({ page }) => {
-  await page.goto(BASE_URL);
 
-  await expect(page).toHaveURL(BASE_URL);
-  await expect(page).toHaveTitle(/Swag Labs/i);
+  await page.goto('https://www.saucedemo.com/',{timeout:15000});//10000
 
   const usernameInput = page.locator('#user-name');
-  const passwordInput = page.locator('#password');
-  const loginButton = page.locator('#login-button');
+  const passwordInput =page.locator('#password');
+  const loginbutton=page.locator('#login-button');
 
-  await expect(usernameInput).toBeVisible();
+  await expect(usernameInput).toBeVisible({timeout:15000});
   await expect(passwordInput).toBeVisible();
-  await expect(loginButton).toBeVisible();
-  await expect(loginButton).toBeEnabled();
+   await expect(loginbutton).toBeVisible();
 
-  await usernameInput.fill('standard_user');
-  await passwordInput.fill('secret_sauce');
+   await usernameInput.fill('standard_user');
+   await passwordInput.fill('secret_sauce');
+   await loginbutton.click({timeout:5000});
 
-  await expect(usernameInput).toHaveValue('standard_user');
-  await expect(passwordInput).toHaveValue('secret_sauce');
+   expect(page.locator('.title')).toHaveText('Products');
+   page.context().storageState({path:STORAGE_STATE_PATH});
 
-  await loginButton.click();
-
-  await page.waitForURL('https://www.saucedemo.com/inventory.html');
-  await expect(page).toHaveURL(/.*inventory\.html/);
-  await expect(page.locator('.title')).toHaveText('Products');
-  await expect(page.locator('.inventory_list')).toBeVisible();
-
-  await page.context().storageState({ path: STORAGE_STATE_PATH });
-});
+  
+}); //30

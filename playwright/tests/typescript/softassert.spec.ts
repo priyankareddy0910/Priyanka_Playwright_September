@@ -1,25 +1,14 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Hard Assert Vs Soft Assert Demo', () => {
-    test('hard assert example', async ({ page }) => {
-        await page.goto('https://www.saucedemo.com/', {
-            waitUntil: 'domcontentloaded',
-        });
+test('dropdown core smoke', async ({ page }) => {
+  await page.goto('https://www.saucedemo.com/', { waitUntil: 'domcontentloaded' });
 
-        await expect.soft(page).toHaveTitle('Lab');
+  await expect.soft(page).toHaveTitle(/Swag Labs/i);
+  console.log('soft assert executed');
 
-        console.log('soft assert executed');
-
-        expect.soft(page.locator(`[data-test='username')`)).toBeVisible();
-
-         console.log('soft assert2 executed');
-
-
-
-
-        
-
-
-       
-    });
+  await expect.soft(page.locator('#user-name')).toBeVisible();
+  console.log('soft assert 2 executed');
 });
+
+
+  

@@ -1,29 +1,34 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Locator } from '@playwright/test';
 
-test('verify page scrolling in detail', async ({ page }) => {
-  await page.goto('https://www.orangehrm.com/en/contact-sales/', {
-    waitUntil: 'domcontentloaded',
-  });
+test('scrolltoview', async ({ page }) => {
 
-  await expect(page).toHaveURL(/.*contact-sales/);
+  await page.goto('https://orangehrm.com/contact-sales',{waitUntil:'domcontentloaded'});
 
-  const careersLink = page.locator('a[href*="/company/careers"]').last();
-  const footerHeading = page.getByRole('heading', { name: 'OrangeHRM' }).last();
+  await expect(page).toHaveURL('https://orangehrm.com/contact-sales');
 
-  await careersLink.scrollIntoViewIfNeeded();
-  await expect(careersLink).toBeVisible();
+  const carrersLink=page.locator('a[href*="/company/careers"]').last();
 
-  await page.mouse.wheel(0, 1500);
+  await carrersLink.scrollIntoViewIfNeeded();
 
-  await page.evaluate(() => {
-    window.scrollTo(0, document.body.scrollHeight);
-  });
+  await expect(carrersLink).toBeVisible();
 
-  await expect(footerHeading).toBeVisible();
+  await page.mouse.wheel(0,500);
 
-  await page.evaluate(() => {
-    window.scrollTo(0, 0);
-  });
+  await page.evaluate(()=>{
+    console.log('scrolling in to bottom');
+    window.scroll(0,500);
+  })
 
-  await expect(page.locator('header')).toBeVisible();
+
+
+
+
+
+
+
+
+
+
+
+
 });

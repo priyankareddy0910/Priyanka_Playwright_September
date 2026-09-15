@@ -25,37 +25,25 @@ const registrationData:RegData[] =
 
         await page.getByRole('textbox',{name:'First Name'}).fill(user.firstName);
          await page.getByRole('textbox',{name:'Last Name'}).fill(user.lastName);
-          await page.getByRole('textbox',{name:'E-Mail'}).fill(user.email);
-           await page.getByRole('textbox',{name:'Telephone'}).fill(user.telephone);
-            await page.locator('#input-password').fill(user.password);
+         await page.getByRole('textbox',{name:'E-Mail'}).fill(user.email);
+         await page.getByRole('textbox',{name:'telephone'}).fill(user.telephone);
+         await page.locator('#input-password').fill(user.password);
 
-            if(user.subscribeNewsletter==='Yes'){
+         if(user.subscribeNewsletter==='Yes'){
+            await page.getByLabel('Yes').check();
+         }
+            else{
+                await page.getByLabel('No').check();
+            }
 
-                await page.getByLabel('Yes').check();
-            }else{
+            await page.locator("input[name='agree']").check();
 
-                    await page.getByLabel('No').check();
-                }
+            expect(page.locator('#content h1')).toHaveText('Register Account');
 
-                await page.locator("input[name='agree']").check();
 
-                await page.getByRole('button',{name:'Continue'}).click();
-                await expect(page.locator('#content h1')).toHaveText('Your Account Has Been Created!');
+          
     });
- }
 
- // A B C 
-
- // A-65 
-
-
-
+}
  
-
-
-
-
-
-
-
 

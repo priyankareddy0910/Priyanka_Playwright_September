@@ -12,6 +12,7 @@ test('handle multiple windows using context.pages()', async ({ page, context }) 
 
   await page.getByRole('link', { name: 'Click Here' }).click();
 
+  
   await expect.poll(() => context.pages().length).toBe(2);
 
   const allPages: Page[] = context.pages();

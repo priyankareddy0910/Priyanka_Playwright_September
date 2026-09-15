@@ -7,6 +7,7 @@ test.describe('JavaScript Alerts', () => {
     page.on('dialog', async (dialog) => {
       console.log(`Alert message: ${dialog.message()}`);
       await dialog.accept();
+      
     });
 
     await page.goto(ALERTS_URL);

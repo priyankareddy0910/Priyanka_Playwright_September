@@ -11,14 +11,14 @@ test.beforeEach(async()=>{
     console.log('beforeEach--Execute');
 
 })
-test('login test',async()=>{
-
-    console.log('login--Execute');
-
-})
 test('logout test',async()=>{
 
     console.log('logout--Execute');
+
+})
+test('login test',async()=>{
+
+    console.log('login--Execute');
 
 })
 test.afterEach(async()=>{

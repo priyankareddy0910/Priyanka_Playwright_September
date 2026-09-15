@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, chromium } from '@playwright/test';
 
 test('getByRole locators on a real website', async ({ page }) => {
   // Website for demo:
@@ -26,4 +26,17 @@ test('getByRole locators on a real website', async ({ page }) => {
 
   // additional assertion
   await expect(page).toHaveURL('https://practicetestautomation.com/logged-in-successfully/');
+});
+
+test('launch chromium browser with chrome channel', async () => {
+  const browser = await chromium.launch({
+    channel: 'chrome',
+    headless: false,
+  });
+
+  const page = await browser.newPage();
+  await page.goto('https://practicetestautomation.com/practice-test-login/');
+  await expect(page).toHaveTitle(/Test Login/);
+
+  await browser.close();
 });

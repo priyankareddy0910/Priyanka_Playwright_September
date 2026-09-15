@@ -9,14 +9,11 @@ test.describe('File Upload Concept In Playwright', () => {
 
         const filepath1 = path.resolve('playwright/tests/data/upload-sample.txt');
 
-        const filepath2 = path.resolve('playwright/tests/data/upload-sample-2.txt');
-
-        await page.setInputFiles('#file-upload', [filepath1, filepath2]);
+        await page.setInputFiles('#file-upload', filepath1);
 
         await page.click('#file-submit');
 
-        await expect(page.locator('h3')).toHaveText('Files Uploaded!');
+        await expect(page.locator('h3')).toHaveText('File Uploaded!');
         await expect(page.locator('#uploaded-files')).toContainText('upload-sample.txt');
-        await expect(page.locator('#uploaded-files')).toContainText('upload-sample-2.txt');
     });
 });

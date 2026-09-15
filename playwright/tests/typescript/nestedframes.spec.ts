@@ -1,13 +1,11 @@
 import { test, expect } from '@playwright/test';
 
 test('google core smoke', async ({ page }) => {
-  await page.goto('https://ui.vision/demo/webtest/frames/');
+  await page.goto('https://the-internet.herokuapp.com/nested_frames');
 
-  const checkbox = page
-    .frameLocator("frame[src='frame_3.html']")
-    .frameLocator('iframe')
-    .getByRole('checkbox', { name: 'I am a human' });
+  const middleFrame = page
+    .frameLocator('frame[name="frame-top"]')
+    .frameLocator('frame[name="frame-middle"]');
 
-  await checkbox.check();
-  await expect(checkbox).toBeChecked();
+  await expect(middleFrame.locator('body')).toHaveText('MIDDLE');
 });

@@ -1,32 +1,33 @@
-import { test, expect } from '@playwright/test';
+import { test, expect,chromium } from '@playwright/test';
+import { channel } from 'node:diagnostics_channel';
+test('mutiple windows', async()=>{
+  const browser =await chromium.launch({channel:'chrome',headless:false});
+  const brtxt=await browser.newContext();
+  const page =await brtxt.newPage();
+  await page.goto('https://orangehrm.com/contact-sales');
+  await page.locator("//a[contains(@href,'https://www.facebook.com')]").click();
+  await page.locator("//a[contains(@href,'https://www.linkedin.com/company/orangehrm')]").click();
+  await page.locator("//a[contains(@href,'https://x.com/orangehrm')]").click();
 
-test('handle parent and child windows in detail', async ({ page, context }) => {
-  await page.goto('https://the-internet.herokuapp.com/windows');
-
-  await expect(page).toHaveTitle('The Internet');
-  await expect(page.locator('h3')).toHaveText('Opening a new window');
-
-  const parentPageTitle = await page.title();
-  const parentPageUrl = page.url();
-
-  const [childPage] = await Promise.all([
-    context.waitForEvent('page'),
-    page.getByRole('link', { name: 'Click Here' }).click(),
-  ]);
-
-  await childPage.waitForLoadState();
-
-  console.log(`Parent page title: ${parentPageTitle}`);
-  console.log(`Parent page URL: ${parentPageUrl}`);
-  console.log(`Child page title: ${await childPage.title()}`);
-  console.log(`Child page URL: ${childPage.url()}`);
-
-  await expect(childPage).toHaveTitle('New Window');
-  await expect(childPage.locator('h3')).toHaveText('New Window');
-
-  await childPage.close();
-
+  await page.waitForTimeout(3000);
+  //how many pages are opened
+  //browser bxtxt page
+  const allpages = brtxt.pages();
+  
+  console.log(allpages.length);//4
+  for(const pg of allpages){
+    if(pg!==page){//1) orange hrm 2)fb
+      console.log(await pg.title());
+      await pg.close();
+    }
+  }
   await page.bringToFront();
-  await expect(page).toHaveTitle('The Internet');
-  await expect(page.locator('h3')).toHaveText('Opening a new window');
+  console.log(page.title());
+
+
+
+
+
+
+
 });

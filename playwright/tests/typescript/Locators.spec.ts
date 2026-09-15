@@ -1,40 +1,35 @@
-import { test, expect, Locator } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
-test('Login Test', async ({ page }) => {
-    await page.goto('http://localhost:4200/pages/forms/layouts');
-    await page.getByPlaceholder('Jane Doe').click();
-    await page.getByRole('textbox',{name:'Email'}).first().click();
-    await page.locator('//span[@class="custom-checkbox"]').first().click();
-    await page.getByText('Remember me').first().click();
-    await page.getByRole('button',{name:'submit'}).filter({hasText:'Submit'}).first().click();
-    const usingTheGridForm =page.locator('nb-card').filter({hasText:'Using the Grid'});
-    await usingTheGridForm.getByPlaceholder('Email').fill('priyanka');
-    await usingTheGridForm.getByPlaceholder('Password').fill('paswrd');
-    
-    usingTheGridForm.getByRole('button',{name:'Sign in'}).click();
+test('GetRoleProgram', async ({ page }) => {
 
-    await expect(usingTheGridForm.getByPlaceholder('Email')).toHaveValue('priyanka');
+  page.goto('https://testautomationpractice.blogspot.com/p/playwrightpractice.html');
 
+const role=page.getByRole('heading',{name:'PlaywrightPractice'});
+await expect(role).toBeVisible();
 
-    
+await  page.getByRole('button',{name:'Primary Action'}).click();
 
+ await page.getByRole('textbox',{name:'username'}).fill('priya');
 
+ await page.getByLabel('Email Address').fill('abc@xyz.com');
+ await page.getByLabel('Password:').fill('xyz');
+ await page.getByLabel('Your Age:').fill("24");
 
+ await page.getByText('submit',{exact:true});
 
+ //submit form
 
-  
+ await page.getByPlaceholder('Enter your full name').fill('priyanka');
 
+ await page.locator('li').filter({hasText:'List item 1'}).click();
+//priyanka reddy trainer
 
+//getbyetxt('priyanka').toContaintext('')
 
-
-
-    
-
-
-
-
-   
-
-
+	
 });
-    
+
+//await expect(locator).tobechecked();
+
+
+

@@ -1,26 +1,35 @@
 [
+
   {
-    "firstName": "Alice",
-    "lastName": "Smith",
-    "email": "aliceqa1@mail.com",
-    "telephone": "1234567890",
-    "password": "Passw0rd@123",
-    "subscribeNewsletter": "Yes"
+
+    "firstName":"Al",
+    "lastName":"Smi",
+    "email":"alia@gmail.com",
+    "telephone":"156677",
+    "password":"Passwrd@12",
+    "subscribeNewsLetter":"yes"
+
   },
-  {
-    "firstName": "Bob",
-    "lastName": "Jones",
-    "email": "bobqa1@mail.com",
-    "telephone": "0987654321",
-    "password": "Secret@456",
-    "subscribeNewsletter": "No"
+
+   {
+
+    "firstName":"Bb",
+    "lastName":"jon",
+    "email":"alc@gmail.com",
+    "telephone":"12477",
+    "password":"P@12",
+    "subscribeNewsLetter":"No"
+
   },
-  {
-    "firstName": "Madhavi",
-    "lastName": "Automation",
-    "email": "madhaviqa1@mail.com",
-    "telephone": "9876543210",
-    "password": "Secret@456",
-    "subscribeNewsletter": "No"
+   {
+
+    "firstName":"Madhu",
+    "lastName":"automatio",
+    "email":"al@gmail.com",
+    "telephone":"127",
+    "password":"Priya@12",
+    "subscribeNewsLetter":"No"
+
   }
+
 ]
